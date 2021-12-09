@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import SignInForm from './components/SignInForm';
+import SignUpForm from './components/SignUpForm';
+import Index from './components/Index';
+import Reservation from './components/Reservation';
+import ReservarDepartamento from './components/ReservarDepartamento';
+import {Container} from '@mui/material'
+import ScopedCssBaseLine from '@mui/material/ScopedCssBaseline';
 
-function App() {
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <BrowserRouter>
+      <Navbar/>
+    <ScopedCssBaseLine>
+      <Container disableGutters maxWidth={false}>
+      <Index/>
+        <Routes>
+            <Route path='/reservarDepartamento' element={<ReservarDepartamento/>}/>
+            <Route path="/signUp" element={<SignUpForm/>}/>
+            <Route path="/signIn" element={<SignInForm/>}/>
+            <Route path='/reservation' element={<Reservation/>}/>
+        </Routes>
+      </Container>
+    </ScopedCssBaseLine>
+      </BrowserRouter>
+  )
 }
 
-export default App;
